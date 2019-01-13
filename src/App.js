@@ -3,37 +3,58 @@ import logo from './logo.svg';
 import './App.css';
 
 import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
 import styled from 'styled-components';
+
+import Header from './components/header';
+import Menu from './components/menu';
+import Main from './components/main';
+
+const url = process.env.PUBLIC_URL + './img/background.png';
+
+/* Creat component */
+const HeaderWrapper = styled.header`
+  width:100%;
+  padding:0px;
+  background:#242424;
+  opacity:.8;
+` 
+
+const MenuWrapper  = styled.div`
+  padding:44.5px 0px;
+`
+
+const MainWrapper = styled.main`
+ height:600px;
+ padding-top:130px;
+background:url(${url}) no-repeat;
+background-size:cover;
+`
+
 
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
-      <Hello />
-      <SayFullName name="Ivan" surname="Ivanov" link="vk.com" />
-      <SayFullName name="Roman" surname="Petichkin" link="facebook.com" />
-      <SayFullName name="Vanya" surname="Kabakov" link="#" />
-  </div>
+      <div className="App">
+        <HeaderWrapper>
+          <Grid>
+           <Header />
+          </Grid>
+        </HeaderWrapper>
+        <MenuWrapper> 
+          <Grid>
+            <Menu />
+          </Grid>
+          </MenuWrapper>
+          <MainWrapper>
+            <Grid>
+              <Main />
+            </Grid>
+          </MainWrapper>
+      </div>
     );
   }
 }
 
-function Hello() {
-  return (
-  <h1>Hello, World!</h1>
-  );
-}
 
-function SayFullName(props) {
-  return (
-      <div>
-      <h1 className="main-header">Hello, {props.name}!</h1>
-      <h2>My name {props.name}, last-name - {props.surname}</h2>
-      <a href={props.link}>Сылка на мой профиль</a>
-      </div>
-  )
-}
 
 export default App;
